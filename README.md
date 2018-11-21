@@ -3,7 +3,7 @@
 ## For a start used  boilerplate react-native-redux-navigation-starter
 ## (also supporting RN 0.54+)
 
-$ cd react-native-redux-navigation-starter/
+$ cd citrus
 
 $ npm install
 ```
