@@ -22,7 +22,7 @@ class AppWithNavigationState extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { prevRoute: 'Splash' };
+        this.state = { prevRoute: 'Home' };
     }
 
     componentDidMount() {

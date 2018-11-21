@@ -1,15 +1,16 @@
 import { StackNavigator } from 'react-navigation';
 
 // components
-import Splash from '../components/splash';
-import Home from '../components/home';
+import Home from '../components/Home';
+import Detail from '../components/Detail';
 
 const AppNavigator = StackNavigator({
-    Splash: { screen: Splash },
     Home: { screen: Home },
+    Detail: { screen: Detail },
 },
     {
-        initialRouteName: 'Splash',
+        initialRouteName: 'Home',
+        headerMode: 'none',
     }
 );
 
