@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, FlatList, RefreshControl, Text, Dimensions } from 'react-native';
+import { View, FlatList, RefreshControl, Text, Dimensions, ActivityIndicator } from 'react-native';
 import Card from '../Card';
 import styles from './styles';
 
@@ -21,17 +21,35 @@ class Home extends Component {
   };
 
   renderFooter = () => {
-    return null;
+    const { data, onEndReached } = this.props;
+    const dataLength = data ? data.length : 0;
+    if (dataLength >= 300) {
+      onEndReached(true);
+    }
+    else {
+      onEndReached(false);
+    };
+    return (
+      <View style={styles.activityIndicator}>
+        <ActivityIndicator
+          animating={true}
+          size={0}
+        />
+      </View>
+    );
   };
 
   onEndReached = () => {
     const { data, getListAsync } = this.props;
     const dataLength = data ? data.length : 0;
-    if (dataLength < 301) { getListAsync(dataLength) };
+    if (dataLength <= 275) {
+      getListAsync(dataLength);
+    }
   }
 
   render() {
-    const { data } = this.props;
+    const { data, endReached } = this.props;
+    console.log('endReached', endReached)
     const window = Dimensions.get('window');
     const threshold = window.height * 2;
     if (!data) { return null };

@@ -34,6 +34,15 @@ export function getError(error) {
         })
     };
 }
+export function endReached(end) {
+  console.log('end',end)
+    return (dispatch) => {
+        return dispatch({
+            type: 'END_REACHED',
+            endReached: end
+        })
+    };
+}
 
 export function getListAsync(skip) {
   return async (dispatch, getState) => {

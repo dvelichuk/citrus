@@ -3,6 +3,7 @@ const initialState = {
 };
 
 export default function reducers(state = initialState, action) {
+    console.log(action.type)
     switch (action.type) {
         case 'SET_TITLE':
             return {
@@ -23,6 +24,11 @@ export default function reducers(state = initialState, action) {
             return {
                 ...state,
                 error: action.error
+            };
+        case 'END_REACHED':
+            return {
+                ...state,
+                endReached: action.endReached
             };
          default:
             return state;

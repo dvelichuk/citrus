@@ -27,8 +27,8 @@ class Card extends Component {
   render() {
     const { image, firstName, lastName, company, desc, email, linkedin, timestaamp, navigate } = this.props;
     const imagePreset = !!image ? { uri: image } : require('../../assets/noavatar.png');
-    const shortDesc = desc.replace(/^(.{60}).+/, "$1…"); // reuces long description to 50 chars
-    const dateFrom = this.cardDateFormat(timestaamp);
+    const shortDesc = !!desc ? desc.replace(/^(.{60}).+/, "$1…") : null; // reuces long description to 50 chars
+    const dateFrom = !!timestaamp ? this.cardDateFormat(timestaamp) : null;
     const propsToPass = { imagePreset, firstName, lastName, company, desc, email, linkedin, dateFrom };
     const onPress = () => {
       navigate('Detail', propsToPass);
